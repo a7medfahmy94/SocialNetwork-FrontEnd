@@ -5,6 +5,7 @@ import com.FCI.SWE.Controllers.UserController;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,68 +22,51 @@ public class LoginActivity extends Activity implements OnClickListener {
 	EditText userNameEditText;
 	EditText passwordEditText;
 	Button loginButton;
-//to check if user did'nt logout in the previous time
-    public Boolean isFileExsist(String filepath) {
-        File file ;
-        try {
-             file = new File(filepath);
-            return file.exists();
-        }
-        finally {
-        }
-    }
+    public static final String prefsName = "login_file";
+    SharedPreferences data ;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
 
-        //if user log in from previous time he can enter his account directly "Still not working"
-        if(isFileExsist("C:\\login_file.txt")){
-            System.out.println("hello there");
-        }
-        else {
+        data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+
+
+        if (data.contains(prefsName)) {
+
+            UserController controller = Application.getUserController();
+            //load data from file
+            String userName = data.getString("name", "Error name!");
+            String password = data.getString("password", "Error password!");
+            controller.login(userName, password);
+            setContentView(R.layout.activity_home);
+        } else {
+            data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
             setContentView(R.layout.activity_login);
             userNameEditText = (EditText) findViewById(R.id.username);
             passwordEditText = (EditText) findViewById(R.id.password);
             loginButton = (Button) findViewById(R.id.loginButton);
             loginButton.setOnClickListener(this);
         }
-	}
+    }
 
-	@Override
+    @Override
 	public void onClick(View v) {
+
 		// TODO Auto-generated method stub
 		UserController controller = Application.getUserController();
 		controller.login(userNameEditText.getText().toString(), passwordEditText
 						.getText().toString());
-        //to take the data returned from db in a file in mobile
-        String FILENAME = "login_file";
-        String  loginInfo =userNameEditText.getText().toString()+ passwordEditText.getText().toString();
 
-        FileOutputStream fos = null;
-        try {
-            fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-            System.out.print("file dir = ");
-            File file = new File("C:\\login_file.txt");
-            String absolutePath = file.getAbsolutePath();
-         /*   String filePath = absolutePath.
-                    substring(0,absolutePath.lastIndexOf(File.separator));*/
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (fos == null) throw new AssertionError();
-        try {
-            fos.write(loginInfo.getBytes());
+        //save the data to file
+        SharedPreferences.Editor editor = data.edit();
+        editor.putString("name",userNameEditText.getText().toString());
+        editor.putString("password",passwordEditText
+                .getText().toString());
+        editor.commit();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 }
