@@ -2,6 +2,7 @@ package com.FCI.SWE.SocialNetwork;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,9 +35,14 @@ public class HomeActivity extends Activity {
         logout.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View arg0) {
-                                          // TODO Auto-generated method stub
-                                          Intent logoutIntent = new Intent(getApplicationContext(),MainActivity.class);
-                                          startActivity(logoutIntent);
+                    // TODO Auto-generated method stub
+                    //delete SharedPreference
+                     SharedPreferences preferences = getSharedPreferences("login_file",MODE_PRIVATE);
+                     SharedPreferences.Editor editor = preferences.edit();
+                     editor.clear();
+                     editor.commit();
+                     Intent logoutIntent = new Intent(getApplicationContext(),MainActivity.class);
+                     startActivity(logoutIntent);
                                       }
                                   }
 
