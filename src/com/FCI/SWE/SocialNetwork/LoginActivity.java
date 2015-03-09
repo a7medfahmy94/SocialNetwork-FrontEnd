@@ -30,10 +30,11 @@ public class LoginActivity extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
+
         data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
 
 
-        if (data.contains(prefsName)) {
+        if (!data.getString("name","").equals("")) {
 
             UserController controller = Application.getUserController();
             //load data from file
