@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.FCI.SWE.Models.UserEntity;
 import com.FCI.SWE.SocialNetwork.HomeActivity;
-import com.FCI.SWE.SocialNetwork.R;
 
 public class UserController {
 
@@ -36,13 +35,13 @@ public class UserController {
 	public void login(String userName, String password) {
 
 		new Connection().execute(
-				String.valueOf(R.string.host_base_url+R.string.login_service), userName,
+				"http://fci-swe-apps.appspot.com/rest/LoginService", userName,
 				password, "LoginService");
 	}
 
 	public void signUp(String userName, String email, String password) {
 		new Connection().execute(
-                String.valueOf(R.string.host_base_url+R.string.signup_service), userName,
+				"http://fci-swe-apps.appspot.com/rest/RegistrationService", userName,
 				email, password, "RegistrationService");
 	}
 
@@ -57,7 +56,7 @@ public class UserController {
 			serviceType = params[params.length - 1];
 			String urlParameters;
 			if (serviceType.equals("LoginService"))
-				urlParameters = "email=" + params[1] + "&password=" + params[2];
+				urlParameters = "uname=" + params[1] + "&password=" + params[2];
 			else
 				urlParameters = "uname=" + params[1] + "&email=" + params[2]
 						+ "&password=" + params[3];
@@ -115,7 +114,7 @@ public class UserController {
 					
 					Intent homeIntent = new Intent(Application.getAppContext(),
 							HomeActivity.class);
-					System.out.println("--- " + serviceType + "IN LOGIN " + object.getString("Status"));
+					System.out.println("--- " + serviceType + " IN LOGIN " + object.getString("Status"));
 					
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					/* here you should initialize user entity */
