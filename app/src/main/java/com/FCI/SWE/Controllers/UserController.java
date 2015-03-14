@@ -57,7 +57,7 @@ public class UserController {
 			serviceType = params[params.length - 1];
 			String urlParameters;
 			if (serviceType.equals("LoginService"))
-				urlParameters = "uname=" + params[1] + "&password=" + params[2];
+				urlParameters = "email=" + params[1] + "&password=" + params[2];
 			else
 				urlParameters = "uname=" + params[1] + "&email=" + params[2]
 						+ "&password=" + params[3];
