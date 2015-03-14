@@ -21,7 +21,7 @@ public class HomeActivity extends Activity {
 		Bundle extras = getIntent().getExtras();
 		String status = extras.getString("status");
 		String name = "",welcome="Hello";
-		
+
 		if(extras.containsKey("name")){
 			name = extras.getString("name");
 			welcome = "Welcome " + name;
