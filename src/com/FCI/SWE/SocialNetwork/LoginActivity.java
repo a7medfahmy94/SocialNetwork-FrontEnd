@@ -62,12 +62,14 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 
         //save the data to file
-        SharedPreferences.Editor editor = data.edit();
-        editor.putString("name",userNameEditText.getText().toString());
-        editor.putString("password",passwordEditText
-                .getText().toString());
-        editor.commit();
-
+        if (data.getString("name","").equals("")) {
+            data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = data.edit();
+            editor.putString("name", userNameEditText.getText().toString());
+            editor.putString("password", passwordEditText
+                    .getText().toString());
+            editor.commit();
+        }
 
     }
 }
