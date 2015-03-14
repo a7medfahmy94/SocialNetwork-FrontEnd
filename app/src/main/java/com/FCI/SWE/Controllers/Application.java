@@ -2,6 +2,7 @@ package com.FCI.SWE.Controllers;
 
 import android.content.Context;
 
+
 public class Application extends android.app.Application {
 
 	private static Context context;
