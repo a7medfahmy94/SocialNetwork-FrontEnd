@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.FCI.SWE.Models.UserEntity;
 import com.FCI.SWE.SocialNetwork.HomeActivity;
+import com.FCI.SWE.SocialNetwork.R;
 
 public class UserController {
 
@@ -35,13 +36,13 @@ public class UserController {
 	public void login(String userName, String password) {
 
 		new Connection().execute(
-				"http://fci-swe-apps.appspot.com/rest/LoginService", userName,
+				String.valueOf(R.string.host_base_url+R.string.login_service), userName,
 				password, "LoginService");
 	}
 
 	public void signUp(String userName, String email, String password) {
 		new Connection().execute(
-				"http://fci-swe-apps.appspot.com/rest/RegistrationService", userName,
+                String.valueOf(R.string.host_base_url+R.string.signup_service), userName,
 				email, password, "RegistrationService");
 	}
 

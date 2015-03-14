@@ -9,5 +9,8 @@
     <string name="username">User name</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
+    <string name="host_base_url">socialnetwork-harle.appspot.com</string>
+    <string name="login_service">/rest/LoginService</string>
+    <string name="signup_service">/rest/RegistrationService</string>
 
 </resources>
