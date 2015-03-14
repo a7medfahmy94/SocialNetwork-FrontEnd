@@ -47,7 +47,6 @@ public class UserController {
         String path = Application.getAppContext().getString(R.string.signup_service);
 		String url = base.concat(path);
         String serviceName = "RegistrationService";
-        System.out.println("=====" + url + "==========");
         new Connection().execute(url, userName,email, password, serviceName);
 	}
 
