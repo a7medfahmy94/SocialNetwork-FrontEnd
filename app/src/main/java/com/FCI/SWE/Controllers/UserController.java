@@ -16,8 +16,6 @@ import android.widget.Toast;
 
 import com.FCI.SWE.Models.UserEntity;
 import com.FCI.SWE.SocialNetwork.HomeActivity;
-import com.FCI.SWE.SocialNetwork.R;
-import android.content.Context;
 
 public class UserController {
 
@@ -35,19 +33,16 @@ public class UserController {
 	}
 
 	public void login(String userName, String password) {
-        String base = Application.getAppContext().getString(R.string.host_base_url);
-        String path = Application.getAppContext().getString(R.string.login_service);
-        String url = base.concat(path);
-        String serviceName = "LoginService";
-        new Connection().execute(url, userName,password, serviceName);
+
+		new Connection().execute(
+				"http://fci-swe-apps.appspot.com/rest/LoginService", userName,
+				password, "LoginService");
 	}
 
 	public void signUp(String userName, String email, String password) {
-        String base = Application.getAppContext().getString(R.string.host_base_url);
-        String path = Application.getAppContext().getString(R.string.signup_service);
-		String url = base.concat(path);
-        String serviceName = "RegistrationService";
-        new Connection().execute(url, userName,email, password, serviceName);
+		new Connection().execute(
+				"http://fci-swe-apps.appspot.com/rest/RegistrationService", userName,
+				email, password, "RegistrationService");
 	}
 
 	static private class Connection extends AsyncTask<String, String, String> {
@@ -61,7 +56,7 @@ public class UserController {
 			serviceType = params[params.length - 1];
 			String urlParameters;
 			if (serviceType.equals("LoginService"))
-				urlParameters = "email=" + params[1] + "&password=" + params[2];
+				urlParameters = "uname=" + params[1] + "&password=" + params[2];
 			else
 				urlParameters = "uname=" + params[1] + "&email=" + params[2]
 						+ "&password=" + params[3];
