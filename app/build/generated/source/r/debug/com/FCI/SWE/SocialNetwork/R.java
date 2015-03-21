@@ -28,12 +28,12 @@ public final class R {
         public static final int login=0x7f08000b;
         public static final int loginButton=0x7f08000a;
         public static final int logoutButton=0x7f080001;
-        public static final int myFreiends=0x7f080004;
+        public static final int myFreiends=0x7f080003;
         public static final int password=0x7f080009;
         public static final int passwordTextView=0x7f080008;
         public static final int password_registration=0x7f08000f;
         public static final int searchUser=0x7f080002;
-        public static final int seeFriends=0x7f080003;
+        public static final int seeFriends=0x7f080004;
         public static final int signUp=0x7f08000c;
         public static final int username_registration=0x7f08000d;
     }
