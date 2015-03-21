@@ -1,5 +1,7 @@
 package com.FCI.SWE.SocialNetwork;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -8,38 +10,56 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.FCI.SWE.Controllers.Application;
+import com.FCI.SWE.Controllers.UserController;
+
 public class MainActivity extends Activity {
 
 	
 	Button login,signUp;
+    public static final String prefsName = "login_file";
+    SharedPreferences data ;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        login = (Button) findViewById(R.id.login);
-        signUp = (Button) findViewById(R.id.signUp);
-        login.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Intent loginIntent = new Intent(getApplicationContext(),LoginActivity.class);
-				startActivity(loginIntent);
-				
-			}
-		});
-        signUp.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent registerationIntent = new Intent(getApplicationContext(),RegistrationActivity.class);
-				startActivity(registerationIntent);
-			}
-		});
-    }
+        data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
 
+
+        if (!data.getString("email","").equals("")) {
+
+            UserController controller = Application.getUserController();
+            //load data from file
+            String email = data.getString("email", "Error name!");
+            String password = data.getString("password", "Error password!");
+            controller.login(email, password);
+            setContentView(R.layout.activity_home);
+        }
+            else{
+                setContentView(R.layout.activity_main);
+                login = (Button) findViewById(R.id.login);
+                signUp = (Button) findViewById(R.id.signUp);
+                login.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View arg0) {
+                        // TODO Auto-generated method stub
+                        Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(loginIntent);
+
+                    }
+                });
+                signUp.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        // TODO Auto-generated method stub
+                        Intent registerationIntent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                        startActivity(registerationIntent);
+                    }
+                });
+            }
+        }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

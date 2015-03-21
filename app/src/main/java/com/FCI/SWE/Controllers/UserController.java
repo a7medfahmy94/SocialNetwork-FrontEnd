@@ -34,12 +34,12 @@ public class UserController {
 
 	}
 
-	public void login(String userName, String password) {
+	public void login(String email, String password) {
         String base = Application.getAppContext().getString(R.string.host_base_url);
         String path = Application.getAppContext().getString(R.string.login_service);
         String url = base.concat(path);
         String serviceName = "LoginService";
-        new Connection().execute(url, userName,password, serviceName);
+        new Connection().execute(url, email,password, serviceName);
 	}
 
 	public void signUp(String userName, String email, String password) {
