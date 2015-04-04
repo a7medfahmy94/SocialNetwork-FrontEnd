@@ -12,10 +12,12 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Message;
 import android.widget.Toast;
 
 import com.FCI.SWE.Models.UserEntity;
 import com.FCI.SWE.SocialNetwork.HomeActivity;
+import com.FCI.SWE.SocialNetwork.MessageActivity;
 import com.FCI.SWE.SocialNetwork.R;
 import android.content.Context;
 
@@ -33,6 +35,7 @@ public class UserController {
 	private UserController() {
 
 	}
+    public static String getCurrentUserEmail(){ return "default"; }
 
 	public void login(String userName, String password) {
         String base = Application.getAppContext().getString(R.string.host_base_url);
@@ -49,7 +52,13 @@ public class UserController {
         String serviceName = "RegistrationService";
         new Connection().execute(url, userName,email, password, serviceName);
 	}
-
+    public void sendMessage( String emailSender,String emailReceiver,String message) {
+        String base = Application.getAppContext().getString(R.string.host_base_url);
+        String path = Application.getAppContext().getString(R.string.sendmessage_service);
+        String url = base.concat(path);
+        String serviceName = "MessageService";
+        new Connection().execute(url,emailSender,emailReceiver,message);
+    }
 	static private class Connection extends AsyncTask<String, String, String> {
 
 		String serviceType;
@@ -62,9 +71,11 @@ public class UserController {
 			String urlParameters;
 			if (serviceType.equals("LoginService"))
 				urlParameters = "email=" + params[1] + "&password=" + params[2];
-			else
+			else if (serviceType.equals("RegistrationService"))
 				urlParameters = "uname=" + params[1] + "&email=" + params[2]
 						+ "&password=" + params[3];
+            else
+                urlParameters = "sender=" + params[1]+"receiver="+params[2]+"message="+params[3];
 
 			HttpURLConnection connection;
 			try {
@@ -128,13 +139,21 @@ public class UserController {
 					
 					Application.getAppContext().startActivity(homeIntent);
 				}
-				else{
+				else if (serviceType.equals("RegistrationService")){
 					Intent homeIntent = new Intent(Application.getAppContext(),
 							HomeActivity.class);
 					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					homeIntent.putExtra("status", "Registered successfully");
 					Application.getAppContext().startActivity(homeIntent);
 				}
+                else{
+                    Intent homeIntent = new Intent(Application.getAppContext(),
+                           MessageActivity.class);
+                    homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					/* here you should initialize user entity */
+                    homeIntent.putExtra("status", object.getString("Status"));
+                    Application.getAppContext().startActivity(homeIntent);
+                }
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
