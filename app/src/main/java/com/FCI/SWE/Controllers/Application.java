@@ -5,8 +5,8 @@ import android.content.Context;
 
 public class Application extends android.app.Application {
 
-	private static Context context;
-	private static UserController userController;
+    public static UserController userController;
+    public static Context context;
 
     public void onCreate(){
         super.onCreate();
