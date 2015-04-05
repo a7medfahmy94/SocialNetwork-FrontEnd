@@ -6,7 +6,6 @@ public class UserEntity {
 	private String name;
 	private String email;
 	private String password;
-
 	/**
 	 * Constructor accepts user data
 	 * 
@@ -19,12 +18,13 @@ public class UserEntity {
 	 */
 	
 	
-	private UserEntity(String name, String email, String password) {
+	public UserEntity(String name, String email, String password) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
 
 	}
+
 
 	public String getName() {
 		return name;
