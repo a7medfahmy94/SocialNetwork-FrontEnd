@@ -46,6 +46,17 @@ public class HomeActivity extends Activity {
                                   }
 
         );
+
+
+        Button notifications_btn = (Button) findViewById(R.id.notifications_btn);
+        notifications_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent notiIntent = new Intent(getApplicationContext(),NotificationsActivity.class);
+                startActivity(notiIntent);
+            }
+        });
+
 	}
 
 }
