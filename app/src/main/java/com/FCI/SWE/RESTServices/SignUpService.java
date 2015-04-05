@@ -1,11 +1,17 @@
-package com.FCI.SWE.Controllers;
+package com.FCI.SWE.RESTServices;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.FCI.SWE.Controllers.Application;
+import com.FCI.SWE.Controllers.UserController;
 import com.FCI.SWE.Models.UserEntity;
 import com.FCI.SWE.SocialNetwork.HomeActivity;
+import com.FCI.SWE.SocialNetwork.LoginActivity;
+import com.FCI.SWE.SocialNetwork.MainActivity;
+import com.FCI.SWE.SocialNetwork.R;
+import com.FCI.SWE.SocialNetwork.RegistrationActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,25 +26,27 @@ import java.net.URL;
 /**
  * Created by root on 4/5/15.
  */
-public class Connection extends AsyncTask<String, String, String> {
+public class SignUpService extends AsyncTask<String, String, String> {
+    final String base = Application.getAppContext().getString(R.string.host_base_url);
+    final String path = Application.getAppContext().getString(R.string.signup_service);
+    final String fullUrl = base.concat(path);
 
-    String serviceType;
+    private String email , password , name;
+
 
     @Override
     protected String doInBackground(String... params) {
-        // TODO Auto-generated method stub
+        this.name = params[0];
+        this.email = params[1];
+        this.password = params[2];
+
         URL url;
-        serviceType = params[params.length - 1];
         String urlParameters;
-        if (serviceType.equals("LoginService"))
-            urlParameters = "email=" + params[1] + "&password=" + params[2];
-        else
-            urlParameters = "uname=" + params[1] + "&email=" + params[2]
-                    + "&password=" + params[3];
+        urlParameters = "uname=" + params[0] + "&email=" + params[1] + "&password=" + params[2];
 
         HttpURLConnection connection;
         try {
-            url = new URL(params[0]);
+            url = new URL(this.fullUrl);
 
             connection = (HttpURLConnection) url.openConnection();
             connection.setDoOutput(true);
@@ -73,38 +81,24 @@ public class Connection extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        // TODO Auto-generated method stub
         super.onPostExecute(result);
         try {
             JSONObject object = new JSONObject(result);
 
             if(!object.has("Status") || object.getString("Status").equals("Failed")){
-                Toast.makeText(Application.getAppContext(), "Error occured", Toast.LENGTH_LONG).show();
+
                 return;
             }
+            UserController.setCurrentActiveUser(new UserEntity(name, email, password));
+            Intent homeIntent = new Intent(Application.getAppContext(),
+                    HomeActivity.class);
 
-            if (serviceType.equals("LoginService")) {
+            homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                UserController.setCurrentActiveUser(UserEntity.createLoginUser(result));
+            Application.getAppContext().startActivity(homeIntent);
 
-                Intent homeIntent = new Intent(Application.getAppContext(),
-                        HomeActivity.class);
-                System.out.println("--- " + serviceType + "IN LOGIN " + object.getString("Status"));
-
-                homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					/* here you should initialize user entity */
-                homeIntent.putExtra("status", object.getString("Status"));
-                homeIntent.putExtra("name", object.getString("name"));
-
-                Application.getAppContext().startActivity(homeIntent);
-            }
-            else{
-                Intent homeIntent = new Intent(Application.getAppContext(),
-                        HomeActivity.class);
-                homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                homeIntent.putExtra("status", "Registered successfully");
-                Application.getAppContext().startActivity(homeIntent);
-            }
+            return;
 
         } catch (JSONException e) {
             // TODO Auto-generated catch block
@@ -112,5 +106,4 @@ public class Connection extends AsyncTask<String, String, String> {
         }
 
     }
-
-}   
+}
