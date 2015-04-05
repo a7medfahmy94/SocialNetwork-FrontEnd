@@ -58,11 +58,12 @@ public final class R {
         public static final int login=0x7f050006;
         public static final int login_service=0x7f050007;
         public static final int notificatinos_button=0x7f050008;
-        public static final int password=0x7f050009;
-        public static final int search_button=0x7f05000a;
-        public static final int sign_up=0x7f05000b;
-        public static final int signup_service=0x7f05000c;
-        public static final int username=0x7f05000d;
+        public static final int notifications_service=0x7f050009;
+        public static final int password=0x7f05000a;
+        public static final int search_button=0x7f05000b;
+        public static final int sign_up=0x7f05000c;
+        public static final int signup_service=0x7f05000d;
+        public static final int username=0x7f05000e;
     }
     public static final class style {
         /** 

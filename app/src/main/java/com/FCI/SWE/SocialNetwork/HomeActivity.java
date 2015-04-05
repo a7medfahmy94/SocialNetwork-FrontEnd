@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.FCI.SWE.Listeners.GetNotificationsListener;
 import com.FCI.SWE.Models.FriendRequestNotification;
 import com.FCI.SWE.Models.MessageNotification;
 import com.FCI.SWE.Models.Notification;
@@ -45,18 +46,8 @@ public class HomeActivity extends Activity {
 
 
         Button notifications_btn = (Button) findViewById(R.id.notifications_btn);
-        final ArrayList<Notification> notifications = new ArrayList<Notification>();
-        notifications.add(new MessageNotification("Message"));
-        notifications.add(new FriendRequestNotification("Friend Request"));
+        notifications_btn.setOnClickListener(new GetNotificationsListener());
 
-        notifications_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent notiIntent = new Intent(getApplicationContext(), NotificationsActivity.class);
-                notiIntent.putExtra("notifications", notifications);
-                startActivity(notiIntent);
-            }
-        });
 
 	}
 

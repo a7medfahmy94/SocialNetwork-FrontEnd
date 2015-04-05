@@ -18,20 +18,24 @@ import java.util.ArrayList;
  */
 public class NotificationsActivity extends ListActivity {
     public static ListView lv;
+    private static ArrayList<Notification> notifications;
+    private static ArrayAdapter<Notification> adapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = getIntent();
-        ArrayList<Notification> notifications =
-                (ArrayList<Notification>)intent.getSerializableExtra("notifications");
-
-        // Binding resources Array to ListAdapter
-        this.setListAdapter(
-                new ArrayAdapter<Notification>(this, R.layout.list_item, R.id.label, notifications));
+        notifications = new ArrayList<Notification>();
+        adapter = new ArrayAdapter<Notification>(this,R.layout.list_item, R.id.label, notifications);
+        this.setListAdapter(adapter);
 
         this.lv = getListView();
         this.lv.setOnItemClickListener(new NotificationListListener());
+    }
+
+    public static void addItem(Notification n){
+        notifications.add(n);
+        adapter.notifyDataSetChanged();
     }
 
 }
