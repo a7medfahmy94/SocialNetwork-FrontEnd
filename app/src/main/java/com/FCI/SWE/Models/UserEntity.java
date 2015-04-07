@@ -29,10 +29,7 @@ public class UserEntity {
 	public String getName() {
 		return name;
 	}
-
-	public String getEmail() {
-		return email;
-	}
+    public  String getEmail(){ return email;}
 
 	public String getPass() {
 		return password;
