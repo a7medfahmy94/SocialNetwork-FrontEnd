@@ -5,9 +5,21 @@ import android.util.Log;
 
 import com.FCI.SWE.Controllers.Application;
 import com.FCI.SWE.Controllers.UserController;
+import com.FCI.SWE.Models.FriendRequestNotification;
+import com.FCI.SWE.Models.MessageNotification;
 import com.FCI.SWE.Models.UserEntity;
 import com.FCI.SWE.SocialNetwork.NotificationsActivity;
 import com.FCI.SWE.SocialNetwork.R;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,51 +34,56 @@ import java.net.URL;
 public class NotificationsService extends AsyncTask<String, String, String> {
     final String base = Application.getAppContext().getString(R.string.host_base_url);
     final String path = Application.getAppContext().getString(R.string.notifications_service);
-    final String fullUrl = base.concat(path);
+    String fullUrl = base.concat(path);
 
     protected String doInBackground(String... params){
-        URL url;
-        UserEntity e = UserController.getCurrentActiveUser();
-        String urlParameters;
-        urlParameters = "email=" + e.getEmail() + "&password=" + e.getPass();
-
-        HttpURLConnection connection;
         try {
-            url = new URL(this.fullUrl);
+            UserEntity e = UserController.getCurrentActiveUser();
+            fullUrl += e.getEmail() + "&" + e.getPass();
+            //------------------>>
+            HttpGet httpget = new HttpGet(fullUrl);
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpResponse response = httpclient.execute(httpget);
 
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setDoOutput(true);
-            connection.setDoInput(true);
-            connection.setInstanceFollowRedirects(false);
-            connection.setRequestMethod("GET");
-            connection.setConnectTimeout(60000); // 60 Seconds
-            connection.setReadTimeout(60000); // 60 Seconds
+            // StatusLine stat = response.getStatusLine();
+            int status = response.getStatusLine().getStatusCode();
 
-            connection.setRequestProperty("Content-Type",
-                    "application/x-www-form-urlencoded;charset=UTF-8");
-            OutputStreamWriter writer = new OutputStreamWriter(
-                    connection.getOutputStream());
-            writer.write(urlParameters);
-            writer.flush();
-            String line, retJson = "";
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream()));
-
-            while ((line = reader.readLine()) != null) {
-                retJson += line;
+            if (status == 200) {
+                HttpEntity entity = response.getEntity();
+                String data = EntityUtils.toString(entity);
+                return data;
             }
-            return retJson;
 
-        } catch (IOException ex) {
-            // TODO Auto-generated catch block
-            ex.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
-
     }
+
     protected void onPostExecute(String result){
-        if(result == null)result = "nop";
-        Log.i("service" , result);
-//        NotificationsActivity.addItem();
+        try {
+            JSONObject json = new JSONObject(result);
+            JSONArray messages_emails = json.getJSONArray("messages_emails");
+            JSONArray messages_text = json.getJSONArray("messages_text");
+            JSONArray friend_requests_emails = json.getJSONArray("friend_requests_emails");
+            for(int i = 0 ; i < messages_emails.length(); ++i) {
+                NotificationsActivity.addItem(new MessageNotification(
+                        messages_emails.getString(i),messages_text.getString(i)
+                ));
+                Log.i("noti" , messages_emails.getString(i));
+                Log.i("noti" , messages_text.getString(i));
+
+            }
+            for(int i = 0 ; i < friend_requests_emails.length(); ++i){
+                NotificationsActivity.addItem(new FriendRequestNotification(
+                        friend_requests_emails.getString(i)
+                ));
+                Log.i("noti" , friend_requests_emails.getString(i));
+            }
+            Log.i("noti" , "hopa");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

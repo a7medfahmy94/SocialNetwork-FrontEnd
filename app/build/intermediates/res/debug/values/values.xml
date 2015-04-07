@@ -15,7 +15,7 @@
     <string name="login">Login</string>
     <string name="login_service">/rest/login</string>
     <string name="notificatinos_button">Notifications</string>
-    <string name="notifications_service">/notifications</string>
+    <string name="notifications_service">/rest/notifications/</string>
     <string name="password">Password</string>
     <string name="search_button">Search</string>
     <string name="sign_up">Sign up</string>

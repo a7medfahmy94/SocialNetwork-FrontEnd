@@ -6,8 +6,10 @@ import android.util.Log;
  * Created by root on 4/5/15.
  */
 public class FriendRequestNotification extends Notification {
-    public FriendRequestNotification(String s){
-        super(s);
+    public String sender_email;
+    public FriendRequestNotification(String sender_email){
+        super("Friend request from " + sender_email);
+        this.sender_email = sender_email;
     }
 
     @Override
