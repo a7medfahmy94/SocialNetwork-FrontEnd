@@ -37,5 +37,8 @@ public class NotificationsActivity extends ListActivity {
         notifications.add(n);
         adapter.notifyDataSetChanged();
     }
-
+    public static void removeItem(Notification n){
+        notifications.remove(n);
+        adapter.notifyDataSetChanged();
+    }
 }

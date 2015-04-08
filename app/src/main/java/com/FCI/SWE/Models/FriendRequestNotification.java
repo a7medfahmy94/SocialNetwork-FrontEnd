@@ -2,6 +2,8 @@ package com.FCI.SWE.Models;
 
 import android.util.Log;
 
+import com.FCI.SWE.RESTServices.AcceptFriendRequestService;
+
 /**
  * Created by root on 4/5/15.
  */
@@ -14,6 +16,7 @@ public class FriendRequestNotification extends Notification {
 
     @Override
     public void execute() {
+        new AcceptFriendRequestService().execute(sender_email);
         Log.i("noti", "talked to server for accepting friend request");
     }
 }

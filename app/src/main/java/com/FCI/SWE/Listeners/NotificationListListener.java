@@ -16,5 +16,6 @@ public class NotificationListListener implements AdapterView.OnItemClickListener
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Notification n = (Notification)NotificationsActivity.lv.getItemAtPosition(i);
         n.execute();
+        NotificationsActivity.removeItem(n);
     }
 }
