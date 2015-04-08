@@ -4,13 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/helloText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-
-
-        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="325dp"
@@ -21,41 +14,60 @@
             android:layout_height="wrap_content"
             android:text="Logout"
             android:id="@+id/logoutButton"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/searchUser"
+            android:layout_alignEnd="@+id/searchUser" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_button"
+            android:id="@+id/searchUser"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="40dp"
-            android:layout_marginEnd="40dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="search for a user"
-            android:id="@+id/searchUser"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/myFreiends"
-            android:layout_alignEnd="@+id/myFreiends" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="see friend requests"
-            android:id="@+id/seeFriends"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/logoutButton"
-            android:layout_alignStart="@+id/logoutButton" />
+            android:layout_alignParentEnd="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="my friends"
             android:id="@+id/myFreiends"
-            android:layout_alignParentTop="true"
+            android:layout_marginLeft="61dp"
+            android:layout_marginStart="61dp"
+            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notificatinos_button"
+            android:id="@+id/notifications_btn"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/myFreiends"
+            android:layout_toEndOf="@+id/myFreiends"
+            android:layout_marginLeft="43dp"
+            android:layout_marginStart="43dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_target"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/searchUser"
+            android:layout_toLeftOf="@+id/logoutButton"
+            android:layout_toStartOf="@+id/logoutButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_message_btn"
+            android:id="@+id/sendMessageBtn"
+            android:layout_above="@+id/myFreiends"
+            android:layout_alignLeft="@+id/myFreiends"
+            android:layout_alignStart="@+id/myFreiends"
+            android:layout_marginBottom="53dp" />
     </RelativeLayout>
 </LinearLayout>

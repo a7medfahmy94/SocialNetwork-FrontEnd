@@ -12,6 +12,12 @@
     <string name="host_base_url">http://socialnetwork-harle.appspot.com</string>
     <string name="login_service">/rest/login</string>
     <string name="signup_service">/rest/register</string>
+    <string name="notifications_service">/rest/notifications/</string>
+    <string name="notificatinos_button">Notifications</string>
+    <string name="search_button">Search</string>
+    <string name="home_button">Home</string>
     <string name="sendmessage_service">/rest/chat/send</string>
+    <string name="send_message_btn">Send a message</string>
+    <string name="acceptFriendRequestService">/rest/acceptFriendRequest</string>
 
 </resources>

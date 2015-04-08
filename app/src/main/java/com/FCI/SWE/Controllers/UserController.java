@@ -1,25 +1,9 @@
 package com.FCI.SWE.Controllers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Message;
-import android.widget.Toast;
-
 import com.FCI.SWE.Models.UserEntity;
-import com.FCI.SWE.SocialNetwork.HomeActivity;
-import com.FCI.SWE.SocialNetwork.MessageActivity;
+import com.FCI.SWE.RESTServices.LogInService;
+import com.FCI.SWE.RESTServices.SignUpService;
 import com.FCI.SWE.SocialNetwork.R;
-import android.content.Context;
 
 public class UserController {
 
@@ -32,136 +16,27 @@ public class UserController {
 		return userController;
 	}
 
+    public static UserEntity getCurrentActiveUser(){
+        if(currentActiveUser == null){
+            currentActiveUser = new UserEntity("default","default","default");
+        }
+        return currentActiveUser;
+    }
+
+    public static void setCurrentActiveUser(UserEntity e){
+        currentActiveUser = e;
+    }
+
 	private UserController() {
 
 	}
-    public static String getCurrentUserEmail(){ return "default"; }
 
 	public void login(String email, String password) {
-        String base = Application.getAppContext().getString(R.string.host_base_url);
-        String path = Application.getAppContext().getString(R.string.login_service);
-        String url = base.concat(path);
-        String serviceName = "LoginService";
-        new Connection().execute(url, email,password, serviceName);
+        new LogInService().execute(email,password);
 	}
 
 	public void signUp(String userName, String email, String password) {
-        String base = Application.getAppContext().getString(R.string.host_base_url);
-        String path = Application.getAppContext().getString(R.string.signup_service);
-		String url = base.concat(path);
-        String serviceName = "RegistrationService";
-        new Connection().execute(url, userName,email, password, serviceName);
-	}
-    public void sendMessage( String emailSender,String emailReceiver,String message) {
-        String base = Application.getAppContext().getString(R.string.host_base_url);
-        String path = Application.getAppContext().getString(R.string.sendmessage_service);
-        String url = base.concat(path);
-        String serviceName = "MessageService";
-        new Connection().execute(url,emailSender,emailReceiver,message);
-    }
-	static private class Connection extends AsyncTask<String, String, String> {
-
-		String serviceType;
-
-		@Override
-		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			URL url;
-			serviceType = params[params.length - 1];
-			String urlParameters;
-			if (serviceType.equals("LoginService"))
-				urlParameters = "email=" + params[1] + "&password=" + params[2];
-			else if (serviceType.equals("RegistrationService"))
-				urlParameters = "uname=" + params[1] + "&email=" + params[2]
-						+ "&password=" + params[3];
-            else
-                urlParameters = "sender=" + params[1]+"receiver="+params[2]+"text="+params[3];
-
-			HttpURLConnection connection;
-			try {
-				url = new URL(params[0]);
-
-				connection = (HttpURLConnection) url.openConnection();
-				connection.setDoOutput(true);
-				connection.setDoInput(true);
-				connection.setInstanceFollowRedirects(false);
-				connection.setRequestMethod("POST");
-				connection.setConnectTimeout(60000); // 60 Seconds
-				connection.setReadTimeout(60000); // 60 Seconds
-
-				connection.setRequestProperty("Content-Type",
-						"application/x-www-form-urlencoded;charset=UTF-8");
-				OutputStreamWriter writer = new OutputStreamWriter(
-						connection.getOutputStream());
-				writer.write(urlParameters);
-				writer.flush();
-				String line, retJson = "";
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(connection.getInputStream()));
-
-				while ((line = reader.readLine()) != null) {
-					retJson += line;
-				}
-				return retJson;
-
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			try {
-				JSONObject object = new JSONObject(result);
-				
-				if(!object.has("Status") || object.getString("Status").equals("Failed")){
-					Toast.makeText(Application.getAppContext(), "Error occured", Toast.LENGTH_LONG).show();
-					return;
-				}
-				
-				if (serviceType.equals("LoginService")) {
-					
-					currentActiveUser = UserEntity.createLoginUser(result);
-					
-					Intent homeIntent = new Intent(Application.getAppContext(),
-							HomeActivity.class);
-					System.out.println("--- " + serviceType + "IN LOGIN " + object.getString("Status"));
-					
-					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					/* here you should initialize user entity */
-					homeIntent.putExtra("status", object.getString("Status"));
-					homeIntent.putExtra("name", object.getString("name"));
-					
-					Application.getAppContext().startActivity(homeIntent);
-				}
-				else if (serviceType.equals("RegistrationService")){
-					Intent homeIntent = new Intent(Application.getAppContext(),
-							HomeActivity.class);
-					homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					homeIntent.putExtra("status", "Registered successfully");
-					Application.getAppContext().startActivity(homeIntent);
-				}
-                else{
-                    Intent homeIntent = new Intent(Application.getAppContext(),
-                           MessageActivity.class);
-                    homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					/* here you should initialize user entity */
-                    homeIntent.putExtra("status", object.getString("Status"));
-                    Application.getAppContext().startActivity(homeIntent);
-                }
-
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-
+        new SignUpService().execute(userName,email, password);
 	}
 
 }
