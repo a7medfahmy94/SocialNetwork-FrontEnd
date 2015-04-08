@@ -17,5 +17,6 @@
     <string name="search_button">Search</string>
     <string name="home_button">Home</string>
     <string name="sendmessage_service">/rest/chat/send</string>
+    <string name="send_message_btn">Send a message</string>
 
 </resources>

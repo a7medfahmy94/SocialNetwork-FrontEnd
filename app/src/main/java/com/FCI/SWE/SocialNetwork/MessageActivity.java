@@ -1,7 +1,10 @@
 package com.FCI.SWE.SocialNetwork;
 import com.FCI.SWE.Controllers.Application;
 import com.FCI.SWE.Controllers.UserController;
+import com.FCI.SWE.RESTServices.SendMessageService;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,22 +20,19 @@ public class MessageActivity extends Activity implements OnClickListener {
     Button sendButton;
 
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
         MessageFriend = (EditText) findViewById(R.id.message);
         EmailFriend = (EditText) findViewById(R.id.Email);
         sendButton = (Button) findViewById(R.id.send);
         sendButton.setOnClickListener(this);
-
-
     }
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
-        String email=UserController.getCurrentUserEmail();
-        UserController controller = Application.getUserController();
-        controller.sendMessage(email,EmailFriend.getText().toString(),MessageFriend.getText().toString());
-
+        new SendMessageService().execute(EmailFriend.getText().toString(),
+                MessageFriend.getText().toString());
+        Intent returnIntent = new Intent();
+        setResult(RESULT_OK, returnIntent);
+        finish();
     }
 }

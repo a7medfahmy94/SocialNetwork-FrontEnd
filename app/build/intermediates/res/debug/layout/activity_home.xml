@@ -59,6 +59,16 @@
             android:layout_alignBottom="@+id/searchUser"
             android:layout_toLeftOf="@+id/logoutButton"
             android:layout_toStartOf="@+id/logoutButton" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_message_btn"
+            android:id="@+id/sendMessageBtn"
+            android:layout_above="@+id/myFreiends"
+            android:layout_alignLeft="@+id/myFreiends"
+            android:layout_alignStart="@+id/myFreiends"
+            android:layout_marginBottom="53dp" />
     </RelativeLayout>
 </LinearLayout>
 <!-- From: file:/root/AndroidStudioProjects/SocialNetwork-FrontEnd/app/src/main/res/layout/activity_home.xml -->
