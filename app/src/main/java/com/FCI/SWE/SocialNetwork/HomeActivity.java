@@ -30,7 +30,7 @@ public class HomeActivity extends Activity {
 		helloTextView.setText(text);
         //edited by rania sayed
         logout =  (Button)findViewById(R.id.logoutButton);
-
+         //if user click logout back to main page and delete current user data from file
         logout.setOnClickListener(new View.OnClickListener() {
                                       @Override
            public void onClick(View arg0) {

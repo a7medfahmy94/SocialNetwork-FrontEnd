@@ -23,8 +23,11 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //edited by rania sayed
         data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
 
+        //if data saved in the file load data
+        // from file and not make user to login again
 
         if (!data.getString("email","").equals("")) {
 
@@ -35,7 +38,8 @@ public class MainActivity extends Activity {
             controller.login(email, password);
             setContentView(R.layout.activity_home);
         }
-            else{
+            else if (data.getString("email","").equals("")){
+            //if data not saved go to main activity to signup or login
                 setContentView(R.layout.activity_main);
                 login = (Button) findViewById(R.id.login);
                 signUp = (Button) findViewById(R.id.signUp);

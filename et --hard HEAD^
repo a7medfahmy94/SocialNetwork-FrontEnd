@@ -1,0 +1,123 @@
+[33mcommit c420573e7232fbc4a935a747ac4fe3335fcc344c[m
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Tue Mar 17 19:58:28 2015 +0200
+
+    add some new buttons to homePage
+
+[33mcommit 9a28e198b8a396366244ead6bd25926024b3ec33[m
+Author: Ahmed Fahmy <a7med.fahmy94@gmail.com>
+Date:   Sat Mar 14 19:31:26 2015 +0200
+
+    added the apk 14-3-2015 19:31
+
+[33mcommit a951b0c39639256e1163da051b32e4343f818df9[m
+Author: a7medfahmy94 <a7med.fahmy94@gmail.com>
+Date:   Sat Mar 14 19:12:12 2015 +0200
+
+    minor fix
+
+[33mcommit 2383dc063b19a4ed5f8bcb1aa84db8e0c2a8174e[m
+Author: a7medfahmy94 <a7med.fahmy94@gmail.com>
+Date:   Sat Mar 14 19:10:38 2015 +0200
+
+    fixed base url , log in , sign up services
+
+[33mcommit 7fe5809b4cc46b166b0be2a8b5bef211320681b2[m
+Merge: 92b42a2 84a42f5
+Author: a7medfahmy94 <a7med.fahmy94@gmail.com>
+Date:   Sat Mar 14 17:46:48 2015 +0200
+
+    Merge remote-tracking branch 'origin/login' into rania
+
+[33mcommit 84a42f56c8d4a0daca8ce792d6a441819aa1ffd5[m
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Sat Mar 14 17:04:46 2015 +0200
+
+    fix error
+
+[33mcommit 92b42a2350a877f3039451b78e00d716aff4514f[m
+Author: a7medfahmy94 <a7med.fahmy94@gmail.com>
+Date:   Sat Mar 14 16:47:54 2015 +0200
+
+    Changed services urls
+
+[33mcommit 38400c49ecd42084fea07f36e87cca2505e9a950[m
+Merge: 5283411 9310362
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Sat Mar 14 15:07:28 2015 +0200
+
+    Merge branch 'master' into login
+
+[33mcommit 93103622eea77e63c5ed8175f333e7a8ba1069f8[m
+Merge: d67055a aac9bf6
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Sat Mar 14 15:05:49 2015 +0200
+
+    Merge branch 'master' of https://github.com/a7medfahmy94/SocialNetwork-FrontEnd
+
+[33mcommit aac9bf6082069d655f3f2a619bd78084cfaf9cbf[m
+Merge: 39cfbe6 7265e38
+Author: Ahmed Fahmy <a7med.fahmy94@gmail.com>
+Date:   Sat Mar 14 14:41:07 2015 +0200
+
+    Merge branch 'master' of https://github.com/a7medfahmy94/SocialNetwork-FrontEnd
+
+[33mcommit 39cfbe6f8e552f5fde6fa37539c2f2eac8b3eef0[m
+Author: a7medfahmy94 <a7med.fahmy94@gmail.com>
+Date:   Sat Mar 14 14:31:24 2015 +0200
+
+    Changed host url
+
+[33mcommit 50dbffe5b5088e4333e6cd7c4885a63eb4f0491b[m
+Author: a7medfahmy94 <a7med.fahmy94@gmail.com>
+Date:   Sat Mar 14 14:24:24 2015 +0200
+
+    First commit from android studio
+
+[33mcommit 52834110d8bc9ea2062b51cb1e394e7988812314[m
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Mon Mar 9 19:16:36 2015 +0200
+
+    delete sharedprefrence when logout
+
+[33mcommit 30d9ef53fe7fc9321ab28703ff66ca58e9a7c1c6[m
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Mon Mar 9 19:03:35 2015 +0200
+
+    open home directly if the user login the last time using sharedprefrences
+
+[33mcommit 1358a2a8f01335ef179655a2d7db93868f62d665[m
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Mon Mar 9 01:03:23 2015 +0200
+
+    using SharedPreferences to save user data but still not working correct
+
+[33mcommit 0c89cb2042b02861b26f1bc3fe938fe8a42c0a31[m
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Sat Mar 7 17:57:51 2015 +0200
+
+    add fileIsExistance function
+
+[33mcommit c4e69135f160f350afd8faa9e70c6cab8a61a7ec[m
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Sat Mar 7 15:45:30 2015 +0200
+
+    add login_file carry loginInfo
+
+[33mcommit d67055ac93a7085ce34a25a3cad4a7deb87f9f04[m
+Author: rania sayed <raniasayed313@gmail.com>
+Date:   Fri Mar 6 20:46:53 2015 +0200
+
+    add logout button only to back to mainPage
+
+[33mcommit 7265e381a7b851f587335639e10a468c09ac45fd[m
+Author: a7medfahmy94 <a7med.fahmy94@gmail.com>
+Date:   Fri Mar 6 18:58:44 2015 +0200
+
+    first commit
+
+[33mcommit e15e3bf2489a5b95d219693fd164a129c441d665[m
+Author: Ahmed Fahmy <a7med.fahmy94@gmail.com>
+Date:   Fri Mar 6 18:54:30 2015 +0200
+
+    Initial commit

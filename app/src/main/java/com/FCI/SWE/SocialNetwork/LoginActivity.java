@@ -30,26 +30,12 @@ public class LoginActivity extends Activity implements OnClickListener {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
-
-      /*  data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
-
-
-        if (!data.getString("email","").equals("")) {
-
-            UserController controller = Application.getUserController();
-            //load data from file
-            String email = data.getString("email", "Error name!");
-            String password = data.getString("password", "Error password!");
-            controller.login(email, password);
-            setContentView(R.layout.activity_home);*/
-     //   } else {
             data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
             setContentView(R.layout.activity_login);
             emailEditText = (EditText) findViewById(R.id.email);
             passwordEditText = (EditText) findViewById(R.id.password);
             loginButton = (Button) findViewById(R.id.loginButton);
             loginButton.setOnClickListener(this);
-      //  }
     }
 
     @Override

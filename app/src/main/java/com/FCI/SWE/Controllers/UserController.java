@@ -39,8 +39,8 @@ public class UserController {
         String path = Application.getAppContext().getString(R.string.login_service);
         String url = base.concat(path);
         String serviceName = "LoginService";
-        new Connection().execute(url, email,password, serviceName);
-	}
+        new Connection().execute(url, email, password, serviceName);
+    }
 
 	public void signUp(String userName, String email, String password) {
         String base = Application.getAppContext().getString(R.string.host_base_url);
