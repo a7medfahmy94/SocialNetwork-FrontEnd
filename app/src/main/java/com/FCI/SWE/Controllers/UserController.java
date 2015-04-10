@@ -3,7 +3,6 @@ package com.FCI.SWE.Controllers;
 import com.FCI.SWE.Models.UserEntity;
 import com.FCI.SWE.RESTServices.LogInService;
 import com.FCI.SWE.RESTServices.SignUpService;
-import com.FCI.SWE.SocialNetwork.R;
 
 public class UserController {
 

@@ -9,22 +9,25 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Request"
-        android:id="@+id/btnSendRequest"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="121dp"
+        android:text="Send"
+        android:id="@+id/send_btn"
         android:clickable="false"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:layout_alignTop="@+id/email_btn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
-        android:id="@+id/edittext"
+        android:id="@+id/email_btn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="61dp"
         android:ems="10"
-        android:text="@string/enter_text" android:inputType="text" />
+        android:text="@string/enter_text" android:inputType="text"
+        android:layout_toLeftOf="@+id/send_btn"
+        android:layout_toStartOf="@+id/send_btn" />
 
 
 </RelativeLayout>
