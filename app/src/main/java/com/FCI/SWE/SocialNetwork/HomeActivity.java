@@ -4,19 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.FCI.SWE.Listeners.GetNotificationsListener;
-import com.FCI.SWE.Models.FriendRequestNotification;
-import com.FCI.SWE.Models.MessageNotification;
-import com.FCI.SWE.Models.Notification;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class HomeActivity extends Activity {
     private int SEND_MESSAGE = 1;
@@ -55,6 +48,16 @@ public class HomeActivity extends Activity {
                 Intent sendMessageActivity = new Intent(getApplicationContext(),
                         MessageActivity.class);
                 startActivityForResult(sendMessageActivity,SEND_MESSAGE);
+            }
+        });
+
+        Button SendRequest_btn = (Button) findViewById(R.id.sendRequest_btn);
+        SendRequest_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendRequestActivity = new Intent(getApplicationContext(),
+                        SendRequestActivity.class);
+                startActivity(sendRequestActivity);
             }
         });
 
