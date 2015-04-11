@@ -1,2 +1,0 @@
-C:\SocialNetwork-FrontEnd\app\build\intermediates\classes\debug
-C:\SocialNetwork-FrontEnd\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-142259a20f9122868fba37e96205631bc8d145bc.jar

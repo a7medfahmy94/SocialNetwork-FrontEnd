@@ -4,6 +4,7 @@ import com.FCI.SWE.Controllers.Application;
 import com.FCI.SWE.Controllers.UserController;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,6 +37,5 @@ public class RegistrationActivity extends Activity implements OnClickListener {
 						.getText().toString());
 		
 	}
-
 
 }
