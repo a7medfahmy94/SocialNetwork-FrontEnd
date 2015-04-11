@@ -5,6 +5,7 @@ import com.FCI.SWE.Controllers.UserController;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -22,20 +23,18 @@ public class LoginActivity extends Activity implements OnClickListener {
     EditText emailEditText;
     EditText passwordEditText;
     Button loginButton;
-    public static final String prefsName = "login_file";
-    SharedPreferences data ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
-            data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
-            setContentView(R.layout.activity_login);
-            emailEditText = (EditText) findViewById(R.id.email);
-            passwordEditText = (EditText) findViewById(R.id.password);
-            loginButton = (Button) findViewById(R.id.loginButton);
-            loginButton.setOnClickListener(this);
+
+        setContentView(R.layout.activity_login);
+        emailEditText = (EditText) findViewById(R.id.email);
+        passwordEditText = (EditText) findViewById(R.id.password);
+        loginButton = (Button) findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(this);
     }
 
     @Override
@@ -46,16 +45,6 @@ public class LoginActivity extends Activity implements OnClickListener {
         controller.login(emailEditText.getText().toString(), passwordEditText
                 .getText().toString());
 
-
-        //save the data to file
-        if (data.getString("email","").equals("")) {
-            data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = data.edit();
-            editor.putString("email", emailEditText.getText().toString());
-            editor.putString("password", passwordEditText
-                    .getText().toString());
-            editor.commit();
-        }
-
     }
+
 }
