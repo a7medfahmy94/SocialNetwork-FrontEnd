@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends Activity {
     private int SEND_MESSAGE = 1;
+    private int WRITE_POST = 2;
 	TextView helloTextView;
     Button logout;
 	@Override
@@ -58,11 +59,27 @@ public class HomeActivity extends Activity {
             }
         });
 
+        Button writePostBtn = (Button) findViewById(R.id.writePostBtn);
+        writePostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent writePostActivity = new Intent(getApplicationContext(),
+                       PostActivity.class);
+                startActivityForResult(writePostActivity,WRITE_POST);
+            }
+        });
+
+
+
 	}
 
     protected void onActivityResult(int requestCode,int resultCode,Intent data){
         if(requestCode == SEND_MESSAGE){
             Toast.makeText(getApplicationContext(), "message sent!!! =)",
+                    Toast.LENGTH_LONG).show();
+        }
+        else if(requestCode == WRITE_POST){
+            Toast.makeText(getApplicationContext(), "post has been written",
                     Toast.LENGTH_LONG).show();
         }
     }

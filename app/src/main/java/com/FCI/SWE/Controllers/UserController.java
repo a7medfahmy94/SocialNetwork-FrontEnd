@@ -33,6 +33,7 @@ public class UserController {
 
 	public void login(String email, String password) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         String base = Application.getAppContext().getString(R.string.host_base_url);
         String path = Application.getAppContext().getString(R.string.login_service);
         String url = base.concat(path);
@@ -43,6 +44,11 @@ public class UserController {
         new LogInService().execute(email,password);
 	}
 >>>>>>> 65dc6034e7af354be8f335997814d15663e7a31b
+=======
+
+        new LogInService().execute(email,password);
+	}
+>>>>>>> c8361fb017db0e7c70aba59bcea2073b2b7bb8ad
 
 	public void signUp(String userName, String email, String password) {
         new SignUpService().execute(userName,email, password);
