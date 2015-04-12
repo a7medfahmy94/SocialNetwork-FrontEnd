@@ -16,17 +16,15 @@ import com.FCI.SWE.Models.UserEntity;
 
 public class MainActivity extends Activity {
 
-	
-	Button login,signUp;
+
+    Button login,signUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
+
         //edited by rania sayed
-        data = getSharedPreferences(prefsName, Context.MODE_PRIVATE);
-=======
->>>>>>> 65dc6034e7af354be8f335997814d15663e7a31b
+
 
         //if data saved in the file load data
         // from file and not make user to login again
@@ -35,24 +33,11 @@ public class MainActivity extends Activity {
 
             UserController controller = Application.getUserController();
             //load data from file
-<<<<<<< HEAD
-            String email = data.getString("email", "Error name!");
-            String password = data.getString("password", "Error password!");
-            controller.login(email, password);
-            setContentView(R.layout.activity_home);
-        }
-            else if (data.getString("email","").equals("")){
-            //if data not saved go to main activity to signup or login
-                setContentView(R.layout.activity_main);
-                login = (Button) findViewById(R.id.login);
-                signUp = (Button) findViewById(R.id.signUp);
-                login.setOnClickListener(new OnClickListener() {
-=======
+
             String email = Application.data.getString("email", "Error name!");
             String password = Application.data.getString("password", "Error password!");
             String name = Application.data.getString("name" , "name error");
             UserController.setCurrentActiveUser(new UserEntity(name,email,password));
->>>>>>> 65dc6034e7af354be8f335997814d15663e7a31b
 
             Intent intent = new Intent(Application.getAppContext() , HomeActivity.class);
             startActivity(intent);
@@ -89,5 +74,5 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
+
 }
