@@ -60,12 +60,12 @@ public class HomeActivity extends Activity {
         });
 
         Button writePostBtn = (Button) findViewById(R.id.writePostBtn);
-        SendMessageBtn.setOnClickListener(new View.OnClickListener() {
+        writePostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent sendMessageActivity = new Intent(getApplicationContext(),
+                Intent writePostActivity = new Intent(getApplicationContext(),
                        PostActivity.class);
-                startActivityForResult(sendMessageActivity,WRITE_POST);
+                startActivityForResult(writePostActivity,WRITE_POST);
             }
         });
 
@@ -78,7 +78,7 @@ public class HomeActivity extends Activity {
             Toast.makeText(getApplicationContext(), "message sent!!! =)",
                     Toast.LENGTH_LONG).show();
         }
-        else  if(requestCode == WRITE_POST){
+        else if(requestCode == WRITE_POST){
             Toast.makeText(getApplicationContext(), "post has been written",
                     Toast.LENGTH_LONG).show();
         }

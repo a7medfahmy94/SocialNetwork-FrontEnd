@@ -19,12 +19,13 @@ public final class R {
     }
     public static final class id {
         public static final int Email=0x7f080011;
-        public static final int RegistrationButton=0x7f080018;
-        public static final int action_settings=0x7f08001a;
+        public static final int RegistrationButton=0x7f08001a;
+        public static final int action_settings=0x7f08001c;
         public static final int email=0x7f080009;
+        public static final int emailEditText=0x7f080014;
         public static final int emailTextView=0x7f080008;
-        public static final int email_registration=0x7f080016;
-        public static final int label=0x7f080019;
+        public static final int email_registration=0x7f080018;
+        public static final int label=0x7f08001b;
         public static final int linearLayout=0x7f080007;
         public static final int login=0x7f08000d;
         public static final int loginButton=0x7f08000c;
@@ -35,15 +36,16 @@ public final class R {
         public static final int notifications_btn=0x7f080003;
         public static final int password=0x7f08000b;
         public static final int passwordTextView=0x7f08000a;
-        public static final int password_registration=0x7f080017;
-        public static final int post=0x7f080013;
-        public static final int postBtn=0x7f080014;
+        public static final int password_registration=0x7f080019;
+        public static final int postBtn=0x7f080015;
+        public static final int postEditText=0x7f080013;
+        public static final int postTxView=0x7f080016;
         public static final int searchUser=0x7f080001;
         public static final int search_target=0x7f080004;
         public static final int send=0x7f080012;
         public static final int sendMessageBtn=0x7f080005;
         public static final int signUp=0x7f08000e;
-        public static final int username_registration=0x7f080015;
+        public static final int username_registration=0x7f080017;
         public static final int writePostBtn=0x7f080006;
     }
     public static final class layout {
@@ -71,12 +73,13 @@ public final class R {
         public static final int notificatinos_button=0x7f050009;
         public static final int notifications_service=0x7f05000a;
         public static final int password=0x7f05000b;
-        public static final int search_button=0x7f05000c;
-        public static final int send_message_btn=0x7f05000d;
-        public static final int sendmessage_service=0x7f05000e;
-        public static final int sign_up=0x7f05000f;
-        public static final int signup_service=0x7f050010;
-        public static final int username=0x7f050011;
+        public static final int post_service=0x7f05000c;
+        public static final int search_button=0x7f05000d;
+        public static final int send_message_btn=0x7f05000e;
+        public static final int sendmessage_service=0x7f05000f;
+        public static final int sign_up=0x7f050010;
+        public static final int signup_service=0x7f050011;
+        public static final int username=0x7f050012;
     }
     public static final class style {
         /** 
