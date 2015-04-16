@@ -17,8 +17,7 @@ public class UserEntity {
 	 * @param password
 	 *            user provided password
 	 */
-	
-	
+
 	private UserEntity(String name, String email, String password) {
 		this.name = name;
 		this.email = email;

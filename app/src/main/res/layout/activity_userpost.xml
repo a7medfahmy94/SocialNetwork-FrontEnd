@@ -6,28 +6,22 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search By Email"
-        android:id="@+id/emailText" />
+        android:text="write a text"
+        android:id="@+id/text" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/EmailText" />
+        android:id="@+id/Text" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search By Name"
-        android:id="@+id/nameText" />
+        android:text="add feeling"
+        android:id="@+id/textView" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/NameText" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/Search" />
+        android:id="@+id/feeling" />
 </LinearLayout>
