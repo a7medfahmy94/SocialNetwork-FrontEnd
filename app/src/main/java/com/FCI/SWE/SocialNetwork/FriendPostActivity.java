@@ -26,8 +26,8 @@ public class FriendPostActivity extends Activity implements OnClickListener {
     }
     @Override
     public void onClick(View v) {
-        new FriendPostService().execute(post.getText().toString(),
-                email.getText().toString());
+        new FriendPostService().execute(email.getText().toString(),
+                post.getText().toString());
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
         finish();
