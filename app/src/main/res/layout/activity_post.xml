@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/">
+
+    <Button
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:text="new post"
+        android:id="@+id/userPostBtn"
+        android:layout_weight="0.12" />
+
+    <Button
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:text="post to a friend"
+        android:id="@+id/friendPostBtn"
+        android:layout_weight="0.13" />
+</LinearLayout>

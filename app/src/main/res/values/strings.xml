@@ -18,6 +18,9 @@
     <string name="home_button">Home</string>
     <string name="sendmessage_service">/rest/chat/send</string>
     <string name="send_message_btn">Send a message</string>
+    <string name="writePost_btn">Send a message</string>
+    <!--<string name="userPostBtn">Send a message</string>-->
+    <!--<string name="friendPostBtn">Send a message</string>-->
     <string name="acceptFriendRequestService">/rest/acceptFriendRequest</string>
     <string name="userPostService">/rest/userPost</string>
 
