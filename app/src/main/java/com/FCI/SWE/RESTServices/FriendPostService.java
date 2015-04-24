@@ -1,5 +1,4 @@
 package com.FCI.SWE.RESTServices;
-
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -21,14 +20,13 @@ import com.FCI.SWE.SocialNetwork.R;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- * Created by root on 16/04/15.
+ * Created by root on 24/04/15.
  */
-public class UserPost extends AsyncTask<String,String,String> {
+public class FriendPostService extends AsyncTask<String,String,String> {
     protected String doInBackground(String... strings) {
         final String base = Application.getAppContext().getString(R.string.host_base_url);
-        final String path = Application.getAppContext().getString(R.string.userPostService);
+        final String path = Application.getAppContext().getString(R.string.friendPostService);
         String fullUrl = base.concat(path);
         HttpClient httpclient = new DefaultHttpClient();
         // specify the URL you want to post to
@@ -39,9 +37,8 @@ public class UserPost extends AsyncTask<String,String,String> {
             // add an HTTP variable and value pair
             nameValuePairs.add(new BasicNameValuePair("sender",
                     UserController.getCurrentActiveUser().getEmail()));
-            nameValuePairs.add(new BasicNameValuePair("text", strings[0]));
-            nameValuePairs.add(new BasicNameValuePair("feeling", strings[1]));
-            nameValuePairs.add(new BasicNameValuePair("privacy", strings[2]));
+            nameValuePairs.add(new BasicNameValuePair("receiver", strings[0]));
+            nameValuePairs.add(new BasicNameValuePair("text", strings[1]));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             // send the variable and value, in other words post, to the URL
             HttpResponse response = httpclient.execute(httppost);
@@ -74,3 +71,4 @@ public class UserPost extends AsyncTask<String,String,String> {
         }
     }
 }
+

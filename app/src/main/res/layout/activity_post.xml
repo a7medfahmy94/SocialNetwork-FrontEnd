@@ -17,5 +17,5 @@
         android:layout_height="wrap_content"
         android:text="post to a friend"
         android:id="@+id/friendPostBtn"
-        android:layout_weight="0.13" />
+        android:layout_weight="0.14" />
 </LinearLayout>

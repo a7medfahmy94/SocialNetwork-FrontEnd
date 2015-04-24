@@ -23,5 +23,6 @@
     <!--<string name="friendPostBtn">Send a message</string>-->
     <string name="acceptFriendRequestService">/rest/acceptFriendRequest</string>
     <string name="userPostService">/rest/userPost</string>
+    <string name="friendPostService">/rest/userPost</string>
 
 </resources>

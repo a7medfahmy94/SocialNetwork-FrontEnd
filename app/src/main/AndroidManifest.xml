@@ -72,10 +72,29 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.FCI.SWE.SocialNetwork.PostActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.FCI.SWE.SocialNetwork.PostActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.FCI.SWE.SocialNetwork.UserPostActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.FCI.SWE.SocialNetwork.UserPostActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.FCI.SWE.SocialNetwork.FriendPostActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.FCI.SWE.SocialNetwork.FriendPostActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
