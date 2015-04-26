@@ -14,6 +14,7 @@ import com.FCI.SWE.Listeners.GetNotificationsListener;
 import com.FCI.SWE.Models.FriendRequestNotification;
 import com.FCI.SWE.Models.MessageNotification;
 import com.FCI.SWE.Models.Notification;
+import com.FCI.SWE.RESTServices.UserPost;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class HomeActivity extends Activity {
     private int SEND_MESSAGE = 1;
 	TextView helloTextView;
     Button logout;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -30,7 +32,6 @@ public class HomeActivity extends Activity {
 
         //edited by rania sayed
         logout =  (Button)findViewById(R.id.logoutButton);
-
         logout.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View arg0) {
@@ -44,7 +45,6 @@ public class HomeActivity extends Activity {
            }
         });
 
-
         Button notifications_btn = (Button) findViewById(R.id.notifications_btn);
         notifications_btn.setOnClickListener(new GetNotificationsListener());
 
@@ -55,6 +55,16 @@ public class HomeActivity extends Activity {
                 Intent sendMessageActivity = new Intent(getApplicationContext(),
                         MessageActivity.class);
                 startActivityForResult(sendMessageActivity,SEND_MESSAGE);
+            }
+        });
+
+       Button writePost=(Button) findViewById(R.id.writePostButton);
+        writePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent PostActivity = new Intent(getApplicationContext(),
+                        PostActivity.class);
+                startActivity(PostActivity);
             }
         });
 
