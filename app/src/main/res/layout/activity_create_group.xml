@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:text="Group Name :"
+        android:id="@+id/groupNameTxtView"
+        android:textSize="50px" />
+
+    <EditText
+        android:layout_width="213dp"
+        android:layout_height="100px"
+        android:id="@+id/groupNameEdtTxt"
+        android:layout_weight="0.02" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:text="Group Privacy :"
+        android:id="@+id/groupPrivacyTxtView"
+        android:textSize="50px" />
+
+    <EditText
+        android:layout_width="213dp"
+        android:layout_height="100px"
+        android:id="@+id/groupPrivacyEdtText"
+        android:layout_weight="0.02" />
+
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        android:id="@+id/createGroupBtn" />
+
+</LinearLayout>

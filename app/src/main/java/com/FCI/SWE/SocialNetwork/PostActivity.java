@@ -23,17 +23,17 @@ public class PostActivity extends Activity implements OnClickListener {
     EditText writePost;
     EditText friendEmail;
     Button postBtn;
-    TextView post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_post);
+        super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_post);
         writePost = (EditText)findViewById(R.id.postEditText);
         postBtn = (Button)findViewById(R.id.postBtn);
-        post = (TextView)findViewById(R.id.postTxView);
+
         friendEmail = (EditText)findViewById(R.id.emailEditText);
 
-        postBtn.setOnClickListener(this);
+     //   postBtn.setOnClickListener(this);
 
 
 
@@ -41,12 +41,11 @@ public class PostActivity extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View view) {
-        post.setText(writePost.getText());
         //call post service
-        new PostService().execute(friendEmail.getText().toString(),writePost.getText().toString());
+    /*    new PostService().execute(friendEmail.getText().toString(),writePost.getText().toString());
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
-        finish();
+        finish();*/
 
     }
 }

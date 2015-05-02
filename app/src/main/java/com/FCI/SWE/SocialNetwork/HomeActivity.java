@@ -21,8 +21,13 @@ import java.util.ArrayList;
 public class HomeActivity extends Activity {
     private int SEND_MESSAGE = 1;
     private int WRITE_POST = 2;
+    private int CREATE_GROUP = 3;
+    private int JOIN_GROUP = 4;
 	TextView helloTextView;
     Button logout;
+    Button joinGroupBtn;
+    Button createGroupBtn;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -59,13 +64,32 @@ public class HomeActivity extends Activity {
             }
         });
 
-        Button writePostBtn = (Button) findViewById(R.id.writePostBtn);
-        writePostBtn.setOnClickListener(new View.OnClickListener() {
+
+
+
+        /*
+        @author Rania Sayed
+         */
+        joinGroupBtn = (Button)findViewById(R.id.joinGroupBtn);
+        joinGroupBtn.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View view) {
-                Intent writePostActivity = new Intent(getApplicationContext(),
-                       PostActivity.class);
-                startActivityForResult(writePostActivity,WRITE_POST);
+                Intent joinGroupIntent = new Intent(getApplicationContext(),JoinGroupActivity.class);
+                startActivity(joinGroupIntent); //must be startActivityForResult
+                finish();
+            }
+        });
+
+        createGroupBtn = (Button)findViewById(R.id.createGroupBtn);
+        createGroupBtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent createGroupIntent = new Intent(getApplicationContext(),
+                        CreateGroupActivity.class);
+                startActivityForResult(createGroupIntent);//must be startActivityForResult
+
             }
         });
 
