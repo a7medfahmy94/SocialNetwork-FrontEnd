@@ -76,8 +76,8 @@ public class HomeActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent joinGroupIntent = new Intent(getApplicationContext(),JoinGroupActivity.class);
-                startActivity(joinGroupIntent); //must be startActivityForResult
-                finish();
+                startActivityForResult(joinGroupIntent,JOIN_GROUP); //must be startActivityForResult
+
             }
         });
 
@@ -88,7 +88,7 @@ public class HomeActivity extends Activity {
             public void onClick(View view) {
                 Intent createGroupIntent = new Intent(getApplicationContext(),
                         CreateGroupActivity.class);
-                startActivityForResult(createGroupIntent);//must be startActivityForResult
+                startActivityForResult(createGroupIntent,CREATE_GROUP);//must be startActivityForResult
 
             }
         });
