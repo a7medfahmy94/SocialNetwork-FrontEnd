@@ -19,5 +19,6 @@
     <string name="sendmessage_service">/rest/chat/send</string>
     <string name="send_message_btn">Send a message</string>
     <string name="acceptFriendRequestService">/rest/acceptFriendRequest</string>
-
+    <string name="createpage">Create Page</string>
+    <string name="createPageService">rest/pages/createPage/</string>
 </resources>
