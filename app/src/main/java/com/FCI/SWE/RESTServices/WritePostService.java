@@ -28,7 +28,7 @@ import java.util.List;
 
 public class createPageService extends AsyncTask<String, String, String> {
     final String base = Application.getAppContext().getString(R.string.host_base_url);
-    final String path = Application.getAppContext().getString(R.string.createPageService);
+    final String path = Application.getAppContext().getString(R.string.PagePost);
     String fullUrl = base.concat(path);
 
     @Override
@@ -42,9 +42,8 @@ public class createPageService extends AsyncTask<String, String, String> {
             // add an HTTP variable and value pair
             nameValuePairs.add(new BasicNameValuePair("email",
                     UserController.getCurrentActiveUser().getEmail()));
-            nameValuePairs.add(new BasicNameValuePair("pagename", strings[0]));
-            nameValuePairs.add(new BasicNameValuePair("pagecategory", strings[1]));
-            nameValuePairs.add(new BasicNameValuePair("pagetype", strings[2]));
+            nameValuePairs.add(new BasicNameValuePair("page_name", strings[0]));
+            nameValuePairs.add(new BasicNameValuePair("post", strings[1]);
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             // send the variable and value, in other words post, to the URL
             HttpResponse response = httpclient.execute(httppost);
@@ -62,6 +61,6 @@ public class createPageService extends AsyncTask<String, String, String> {
     }
     protected void onPostExecute(String response){
         if(response == null)response = "null";
-        Log.i("createPage", response);
+        Log.i("pagePost", response);
     }
 }

@@ -10,25 +10,20 @@ import android.widget.EditText;
  * Created by Esraa on 4/29/2015.
  */
 public class CreatePageActivity extends Activity {
-    Button createPage;
+    Button likePage;
     EditText pageName;
-    EditText pageCategory;
-    EditText pageType;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_page);
-        pageName =(EditText) findViewById(R.id.pagename);
-        pageCategory =(EditText) findViewById(R.id.pagecategory);
-        pageType =(EditText) findViewById(R.id.pagetype);
-        createPage = (Button) findViewById(R.id.createpage_btn);
+        setContentView(R.layout.activity_likepage);
+        pageName =(EditText) findViewById(R.id.PageNamee);
+        likePage = (Button) findViewById(R.id.LikePage_btn);
         createPage.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
-        new createPageService().execute(pageName.getText().toString(),
-                pageCategory.getText().toString(),pageType.getText.toString());
+        new likePageService().execute(pageName.getText().toString());
         Intent returnIntent = new Intent();
         setResult(RESULT_OK, returnIntent);
         finish();

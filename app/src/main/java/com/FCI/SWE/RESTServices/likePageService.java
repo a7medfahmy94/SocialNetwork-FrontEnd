@@ -16,6 +16,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.lang.String;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class createPageService extends AsyncTask<String, String, String> {
     final String base = Application.getAppContext().getString(R.string.host_base_url);
-    final String path = Application.getAppContext().getString(R.string.createPageService);
+    final String path = Application.getAppContext().getString(R.string.likePage);
     String fullUrl = base.concat(path);
 
     @Override
@@ -42,10 +43,7 @@ public class createPageService extends AsyncTask<String, String, String> {
             // add an HTTP variable and value pair
             nameValuePairs.add(new BasicNameValuePair("email",
                     UserController.getCurrentActiveUser().getEmail()));
-            nameValuePairs.add(new BasicNameValuePair("pagename", strings[0]));
-            nameValuePairs.add(new BasicNameValuePair("pagecategory", strings[1]));
-            nameValuePairs.add(new BasicNameValuePair("pagetype", strings[2]));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            nameValuePairs.add(new BasicNameValuePair("page_name", strings[0]));
             // send the variable and value, in other words post, to the URL
             HttpResponse response = httpclient.execute(httppost);
             HttpEntity entity = response.getEntity();
@@ -62,6 +60,6 @@ public class createPageService extends AsyncTask<String, String, String> {
     }
     protected void onPostExecute(String response){
         if(response == null)response = "null";
-        Log.i("createPage", response);
+        Log.i("likePage", response);
     }
 }

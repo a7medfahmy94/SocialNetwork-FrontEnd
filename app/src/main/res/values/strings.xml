@@ -21,4 +21,6 @@
     <string name="acceptFriendRequestService">/rest/acceptFriendRequest</string>
     <string name="createpage">Create Page</string>
     <string name="createPageService">rest/pages/createPage/</string>
+    <string name="PagePost">rest/pages/writePost/</string>
+    <string name="likePage">rest/pages/likePage</string>
 </resources>
