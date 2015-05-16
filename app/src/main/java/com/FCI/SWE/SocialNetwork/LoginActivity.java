@@ -30,7 +30,9 @@ public class LoginActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+        //get email form EditText
         emailEditText = (EditText) findViewById(R.id.email);
+        //get password form EditText
         passwordEditText = (EditText) findViewById(R.id.password);
         loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(this);
@@ -40,6 +42,7 @@ public class LoginActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
 
         // TODO Auto-generated method stub
+        //call function login from UserController
         UserController controller = Application.getUserController();
         controller.login(emailEditText.getText().toString(), passwordEditText
                 .getText().toString());

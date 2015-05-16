@@ -42,8 +42,9 @@ public class SignUpService extends AsyncTask<String, String, String> {
 
         URL url;
         String urlParameters;
+        //make URL
         urlParameters = "uname=" + params[0] + "&email=" + params[1] + "&password=" + params[2];
-
+        //connect to server
         HttpURLConnection connection;
         try {
             url = new URL(this.fullUrl);
@@ -89,6 +90,7 @@ public class SignUpService extends AsyncTask<String, String, String> {
 
                 return;
             }
+            //set user that signUp in server to current active user
             UserController.setCurrentActiveUser(new UserEntity(name, email, password));
             Intent homeIntent = new Intent(Application.getAppContext(),
                     HomeActivity.class);

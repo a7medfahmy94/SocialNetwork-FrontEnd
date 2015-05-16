@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.FCI.SWE.Listeners.GetNotificationsListener;
 
+
 public class HomeActivity extends Activity {
     private int SEND_MESSAGE = 1;
 	TextView helloTextView;
@@ -21,7 +22,7 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 
-        //edited by rania sayed
+        //logout button in home
         logout =  (Button)findViewById(R.id.logoutButton);
 
         logout.setOnClickListener(new View.OnClickListener() {
@@ -36,11 +37,10 @@ public class HomeActivity extends Activity {
                finish();
            }
         });
-
-
+        //notification button in home
         Button notifications_btn = (Button) findViewById(R.id.notifications_btn);
         notifications_btn.setOnClickListener(new GetNotificationsListener());
-
+        //sendMessage button in home
         Button SendMessageBtn = (Button) findViewById(R.id.sendMessageBtn);
         SendMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class HomeActivity extends Activity {
                 startActivityForResult(sendMessageActivity,SEND_MESSAGE);
             }
         });
-
+        //sendRequest button in home
         Button SendRequest_btn = (Button) findViewById(R.id.sendRequest_btn);
         SendRequest_btn.setOnClickListener(new View.OnClickListener() {
             @Override

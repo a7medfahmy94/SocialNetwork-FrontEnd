@@ -34,8 +34,9 @@ public class LogInService extends AsyncTask<String, String, String> {
     protected String doInBackground(String... params) {
         URL url;
         String urlParameters;
+        //make URL
         urlParameters = "email=" + params[0] + "&password=" + params[1];
-
+        //connect to server
         HttpURLConnection connection;
         try {
             url = new URL(this.fullUrl);
@@ -80,6 +81,7 @@ public class LogInService extends AsyncTask<String, String, String> {
 
                 return;
             }
+            //set user that login in server to current active user
             UserController.setCurrentActiveUser(UserEntity.createLoginUser(result));
 
             //save the data to file

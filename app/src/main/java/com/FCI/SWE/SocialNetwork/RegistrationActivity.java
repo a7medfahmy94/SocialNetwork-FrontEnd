@@ -22,9 +22,12 @@ public class RegistrationActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration);
+        //get UserName for EditText
 		userNameEditText = (EditText) findViewById(R.id.username_registration);
-		userEmailEditText = (EditText) findViewById(R.id.email_registration);
-		passwordEditText = (EditText) findViewById(R.id.password_registration);
+        //get UserEmail for EditText
+        userEmailEditText = (EditText) findViewById(R.id.email_registration);
+        //get UserPassword for EditText
+        passwordEditText = (EditText) findViewById(R.id.password_registration);
 		registrationButton = (Button) findViewById(R.id.RegistrationButton);
 		registrationButton.setOnClickListener(this);
 	
@@ -32,6 +35,7 @@ public class RegistrationActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+        //call function signUp from UserController
 		UserController controller = Application.getUserController();
 		controller.signUp(userNameEditText.getText().toString(), userEmailEditText.getText().toString(), passwordEditText
 						.getText().toString());

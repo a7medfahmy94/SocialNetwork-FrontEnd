@@ -29,6 +29,7 @@ public class NotificationsService extends AsyncTask<String, String, String> {
     final String base = Application.getAppContext().getString(R.string.host_base_url);
     final String path = Application.getAppContext().getString(R.string.notifications_service);
     String fullUrl = base.concat(path);
+    final int ok=200;
 
     protected String doInBackground(String... params){
         try {
@@ -37,12 +38,13 @@ public class NotificationsService extends AsyncTask<String, String, String> {
             //------------------>>
             HttpGet httpget = new HttpGet(fullUrl);
             HttpClient httpclient = new DefaultHttpClient();
+            // send the variable and value, in other words post, to the URL
             HttpResponse response = httpclient.execute(httpget);
 
             // StatusLine stat = response.getStatusLine();
             int status = response.getStatusLine().getStatusCode();
 
-            if (status == 200) {
+            if (status == ok) {
                 HttpEntity entity = response.getEntity();
                 String data = EntityUtils.toString(entity);
                 return data;
@@ -61,6 +63,7 @@ public class NotificationsService extends AsyncTask<String, String, String> {
             JSONArray messages_emails = json.getJSONArray("messages_emails");
             JSONArray messages_text = json.getJSONArray("messages_text");
             JSONArray friend_requests_emails = json.getJSONArray("friend_requests_emails");
+            //get list of messages to set them in notifications
             for(int i = 0 ; i < messages_emails.length(); ++i) {
                 NotificationsActivity.addItem(new MessageNotification(
                         messages_emails.getString(i),messages_text.getString(i)
@@ -69,6 +72,7 @@ public class NotificationsService extends AsyncTask<String, String, String> {
                 Log.i("noti" , messages_text.getString(i));
 
             }
+            //get list of FriendRequest to set them in notifications
             for(int i = 0 ; i < friend_requests_emails.length(); ++i){
                 NotificationsActivity.addItem(new FriendRequestNotification(
                         friend_requests_emails.getString(i)

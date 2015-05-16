@@ -22,7 +22,9 @@ public class MessageActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+        //get Message form EditText
         MessageFriend = (EditText) findViewById(R.id.message);
+        //get friend's email form EditText
         EmailFriend = (EditText) findViewById(R.id.Email);
         sendButton = (Button) findViewById(R.id.send);
         sendButton.setOnClickListener(this);
